@@ -5,7 +5,7 @@ import android.view.View.OnClickListener
 import android.widget.AdapterView
 import reactive.{EventSource, EventStream}
 
-trait ClickableReactiveView[V <: View] extends TraitReactiveView {
+trait ClickableReactiveView[V <: View] extends TraitReactiveView[V] {
 
   private val _eClicks = new EventSource[View]
 

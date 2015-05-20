@@ -1,9 +1,8 @@
 package reactive.android
 
 import android.view.View
-import android.widget.ToggleButton
 import reactive.android.Tools.getOrCreateTag
-import reactive.android.widget.{TraitCommonReactiveView, TraitReactiveToggleButton}
+import reactive.android.widget.TraitCommonReactiveView
 
 trait ReactiveDomain {
   val viewTagId: Int
@@ -14,4 +13,3 @@ trait ReactiveDomain {
 
 class RichCommonReactiveView(val basis: View) extends TraitCommonReactiveView[View]
 
-class RichReactiveToggleButton(val basis: ToggleButton) extends TraitReactiveToggleButton
