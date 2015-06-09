@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 
 class ReactiveActivity extends Activity with ReactiveContext {
+  implicit val ctx = this
 
   override def onCreate(savedInstanceState: Bundle): Unit = {
     super.onCreate(savedInstanceState)
