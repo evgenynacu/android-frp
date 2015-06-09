@@ -8,7 +8,7 @@ import android.widget.{AutoCompleteTextView, Filter, Filterable, ArrayAdapter}
 import reactive.{Observing, Var}
 
 class ReactiveAutoComplete[T <: AnyRef](vValue: Var[Option[T]])
-                                       (autocomplete: String => List[T])
+                                       (autocomplete: String => Seq[T])
                                        (listItem: Int, textViewResourceId: Int)
                                        (implicit ctx: Context)
   extends AutoCompleteTextView(ctx) with Observing {
@@ -38,7 +38,7 @@ class ReactiveAutoComplete[T <: AnyRef](vValue: Var[Option[T]])
   })
 
   class Adapter extends ArrayAdapter[T](ctx, listItem, textViewResourceId) with Filterable {
-    private[android] var resultList: List[T] = List()
+    private[android] var resultList: Seq[T] = List()
 
     override def getCount = resultList.size
 
