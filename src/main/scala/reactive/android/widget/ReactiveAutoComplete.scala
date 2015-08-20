@@ -30,7 +30,6 @@ class ReactiveAutoComplete[T <: AnyRef](vValue: Var[Option[T]])
     override def afterTextChanged(s: Editable) {}
 
     override def onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-      Log.d("TEST", "onTextChanged")
       vValue.update(_adapter.resultList.find(v => v.toString.equals(s.toString)))
     }
 
