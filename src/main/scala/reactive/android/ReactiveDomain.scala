@@ -1,15 +1,19 @@
 package reactive.android
 
 import android.view.View
+import android.widget.TextView
+import reactive.Observing
 import reactive.android.Tools.getOrCreateTag
-import reactive.android.widget.TraitCommonReactiveView
+import reactive.android.widget.{ReactiveClickableView, ReactiveTextView}
 
 trait ReactiveDomain {
-  val viewTagId: Int
+  val clickableViewTagId: Int
+  val textViewTagId: Int
 
-  implicit def viewToReactive(view: View): RichCommonReactiveView =
-    getOrCreateTag[View, RichCommonReactiveView](view, viewTagId, v => new RichCommonReactiveView(v))
+  implicit def clickableView(view: View)(implicit observing: Observing): ReactiveClickableView =
+    getOrCreateTag[View, ReactiveClickableView](view, clickableViewTagId, v => new ReactiveClickableView(v))
+
+  implicit def textViewToReactive(view: TextView)(implicit observing: Observing): ReactiveTextView =
+    getOrCreateTag[TextView, ReactiveTextView](view, textViewTagId, v => new ReactiveTextView(v))
 }
-
-class RichCommonReactiveView(val basis: View) extends TraitCommonReactiveView[View]
 
